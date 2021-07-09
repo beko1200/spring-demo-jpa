@@ -1,9 +1,12 @@
 package com.example.demo.Domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 @Entity
 public class Lesson {
@@ -13,6 +16,17 @@ public class Lesson {
     private Long id;
 
     private String title;
+
+    public LocalDate getDeliveredOn() {
+        return deliveredOn;
+    }
+
+    public void setDeliveredOn(LocalDate deliveredOn) {
+        this.deliveredOn = deliveredOn;
+    }
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    public LocalDate deliveredOn;
 
     public Lesson() {
     }

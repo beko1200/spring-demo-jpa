@@ -5,7 +5,6 @@ import com.example.demo.Repository.LessonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +34,12 @@ public class LessonController {
         return this.lessonRepository.findById(id);
     }
 
+    @GetMapping("/lessons/{title}")
+    public Lesson getLessonByTitle(@PathVariable String title) {
+
+        return this.lessonRepository.findByName(title);
+    }
+
     @DeleteMapping("/lessons/5")
     public Optional<Lesson> deleteLessonById(@PathVariable Long id) {
 
@@ -46,6 +51,9 @@ public class LessonController {
     public List<Lesson> getAllLessons() {
 
     return this.lessonRepository.findAll();
+
+//        this.lessonRepository.findAll().forEach( lessons::add );
+//        return lessons;
 
     }
 
