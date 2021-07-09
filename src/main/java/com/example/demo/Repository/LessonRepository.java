@@ -2,11 +2,17 @@ package com.example.demo.Repository;
 
 import com.example.demo.Domain.Lesson;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface LessonRepository extends CrudRepository<Lesson, Long> {
+@Repository
+public interface LessonRepository extends CrudRepository<Lesson,Long> {
 
-    List<Lesson> findByName(String title);
+    Lesson findByName(String title);
+    Optional<Lesson> findById(Long id);
+    List<Lesson> findAll();
+
 
 }
